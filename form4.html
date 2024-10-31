@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Payment Form</title>
+   <link rel="stylesheet" type="text/css" href="form1.css">
+
+</head>
+<body>
+<form class="contact_form" action="#" >
+    <div class="container">
+        <h1>ADDRESS</h1> 
+        <h3> size <select  class="product" id="p1">
+            <option >normal scoks </option>
+            <option >cut scoks </option>
+        </select>      
+        price <select id="p2">
+            <option>&#8377;399</option>
+        </select> 
+           <img src="8.jpg" > </h3>
+        <div class="first-row">
+            <div class="owner">
+                <div class="selection">
+                    <input type="text" class="name" id="n1" size="30" maxlength="none" placeholder="FULL NAME" required >
+                </div>
+            </div>
+        </div>
+        <div class="second-row">
+            <div class="selection">
+                    <input type="text" class="phone number"  id="n2" size="30" maxlength="10" placeholder="PHONE NUMBER" required >
+            </div> 
+        </div>
+        <div class="third-row">
+            <div class="selection">
+                <input type="text" class="pincode"  size="19" id="n3"  placeholder="PINCODE" required>
+                <input type="email" class="email"  size="19" id="n4" placeholder="YOUR EMAIL"  >
+            </div>
+        </div>
+        <div class="fourth-row">
+            <div class="selection">
+                <input type="text" class="city"  size="19" id="n5"  placeholder="YOUR CITY NAME"required >
+                <input type="text" class="door"  size="19" id="n6" placeholder="DOOR NO." required>
+            </div>
+        </div>
+        <div class="fifth-row">
+            <div class="selection">
+                <input type="text" class="address" size="50"  id="n7" placeholder="AREA NAME,ROAD NAME" required>
+            </div>
+            </div>
+            <div class="col">
+        <button type="submit">send</button>
+        <button type="reset">cancel</button> 
+    </div>
+    </div>
+</form>  
+<script src="https://smtpjs.com/v3/smtp.js"> </script>
+    
+<script>
+  const form = document.querySelector('.contact_form');
+  
+//function to send the message when click on button send
+  function sendmsg(e) {e.preventDefault();
+ const name = document.querySelector('.name'),
+ select = document.querySelector('.product'),
+  phone = document.querySelector('.phone number'),
+  pincode = document.querySelector('.pincode'),
+  email = document.querySelector('.email'),
+  city = document.querySelector('.city'),
+  door = document.querySelector('.door'),
+  address = document.querySelector('.address');
+
+  // function send email ...
+  Email.send({
+SecureToken : "57e92a87-e157-4d3b-8ceb-2fdd8cffe004",
+To : 'sathyaraj97@gmail.com',
+From : email.value,
+Subject : "Contact form",
+Body : "name:" + document.getElementById("n1").value
+          +"<br> product/size :" + document.getElementById("p1").value 
+          +"<br> price :" + document.getElementById("p2").value
+          +"<br> phone number :" + document.getElementById("n2").value
+          + "<br> pincode : " + document.getElementById('n3').value
+          + "<br> email : " + document.getElementById('n4').value
+          + "<br> City : " + document.getElementById('n5').value
+          + "<br> DOOR number : " + document.getElementById('n6').value
+          + "<br> address : " + document.getElementById('n7').value
+
+     }).then(
+    message => alert(message)
+    ); 
+  }
+
+      //add the event listener submit 
+   form.addEventListener('submit',sendmsg);
+       
+  
+
+</script>
+</body>
+</html>
